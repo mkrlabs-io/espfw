@@ -1,0 +1,26 @@
+# Keep the build context small: only the package and its metadata are needed.
+.git
+.venv
+.ruff_cache
+.pytest_cache
+__pycache__
+dist
+build
+*.egg-info
+
+# Large local sample images and ELFs, not part of the tool.
+*.bin
+*.elf
+
+# A local copy of the corpus, if one was placed here; it is supplied through
+# the `corpus` build context instead.
+corpus.sqlite
+
+# Not needed inside the image.
+tests
+scripts
+skills
+espfw-spec.md
+uv.lock
+Dockerfile
+.dockerignore

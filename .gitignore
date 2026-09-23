@@ -1,0 +1,82 @@
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Environments and tooling caches ------------------------------------------
+.venv/
+venv/
+env/
+.python-version
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# uv.lock is deliberately NOT ignored: espfw is an application, and pinning the
+# resolved dependency set is part of making a run reproducible.
+
+# --- Firmware under analysis --------------------------------------------------
+# Never commit images. They are third-party, frequently proprietary, and §12 of
+# the spec treats their contents as attacker-controlled. Keep them out of the
+# repo entirely rather than relying on review to catch one.
+*.bin
+*.img
+*.elf
+*.hex
+*.dump
+*.flash
+firmware/
+images/
+samples/
+# Escape hatch: if a small synthetic fixture ever needs to be tracked, put it
+# under tests/data/ and un-ignore it explicitly, e.g.
+#   !tests/data/*.bin
+
+# --- Corpus and cache ---------------------------------------------------------
+# Signature corpora are rebuilt from (idf_version, config, chip, toolchain) via
+# `espfw corpus build`; they are large, machine-specific, and reproducible.
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+.cache/
+corpus_out/
+artifacts/
+sdkconfig
+sdkconfig.old
+sdkconfig.out
+
+# --- Ghidra -------------------------------------------------------------------
+# Headless runs use a temporary project, but an interactive one alongside the
+# repo would otherwise land here.
+*.gpr
+*.rep/
+*.gpr.lock
+*.gpr.lock~
+ghidra_projects/
+.ghidra/
+
+# --- Scratch ------------------------------------------------------------------
+scratchpad/
+tmp/
+*.log
+*.tmp
+
+# --- Editors and OS -----------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
